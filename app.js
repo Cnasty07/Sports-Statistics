@@ -3,9 +3,10 @@ const bodyParser = require("body-parser")
 const ejs = require('ejs')
 const mongoose = require("mongoose");
 const auto_update = require("./src/database/controller/update_db_page")
-
+const dotenv = require('dotenv');
+dotenv.config({ path: '.env.dev' });
 // starts autoupdater for new information from api
-const dburi = "mongodb+srv://cn:12345web@web-dev-db.fhkedej.mongodb.net/?retryWrites=true&w=majority&appName=web-dev-db"
+const dburi = process.env.MONGO_URI;
 mongoose.connect(dburi).then(() => console.log("connected"))
 // auto_update.start_auto_update()
 
